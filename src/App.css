@@ -1,4 +1,4 @@
-/* .Quiz {
+.Quiz {
   min-height: 100vh;
   width: 100vw;
 }
@@ -16,9 +16,9 @@ main {
 footer {
   width: calc(100vw - (100vw - 100%));
   height: 8vh;
-} */
+}
 
-.App {
+/* .App {
   text-align: center;
   font-family: arial;
   display: flex;
@@ -86,4 +86,4 @@ button:hover {
 
 h3 {
   color: #ffffff;
-}
+} */

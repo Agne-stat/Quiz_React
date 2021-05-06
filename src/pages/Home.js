@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css'
 
 function Home() {
@@ -6,7 +7,9 @@ function Home() {
         <main>
             <div className="wrapper">
                 <div className="container">
-                    <button className="start__btn">START QUIZ<span className="start__btn-span hide">RANDOM THEME</span></button>
+                    <Link to='/quiz'>
+                        <button className="start__btn">START QUIZ<span className="start__btn-span hide">RANDOM THEME</span></button>
+                    </Link>
                 </div>
             </div>
         </main>
