@@ -1,0 +1,31 @@
+header {
+  padding: 30px 30px;
+  width: calc(100vw - (100vw - 100%));
+  height: 10vh;
+  background-color: #ff6b6b;
+}
+
+.navigation {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  list-style: none;
+}
+
+.navigation__item i {
+  margin: 0 5px;
+  color: #4ecdc4;
+  cursor: pointer;
+}
+
+.navigation__item:hover i {
+  color: #ffe66d;
+}
+
+.navigation__item a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.2em;
+  color: #f7fff7;
+}
