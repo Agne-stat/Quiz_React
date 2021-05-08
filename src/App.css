@@ -18,6 +18,10 @@ footer {
   height: 8vh;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* .App {
   text-align: center;
   font-family: arial;

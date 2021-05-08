@@ -7,6 +7,8 @@ import QuizEnd from '../components/Quiz/QuizEnd';
 function Quiz() {
     const [gameState, setGameState] = useState("menu");
     const [score, setScore] = useState(0);
+    const [userName, setUserName] = useState('');
+
     return (
         <main>
             <GameStateContext.Provider
@@ -14,7 +16,9 @@ function Quiz() {
                 gameState,
                 setGameState,
                 score,
-                setScore
+                setScore, 
+                userName, 
+                setUserName
                 }}
             >
                 {gameState === "menu" && <QuizMenu />}
