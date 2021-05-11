@@ -1,63 +1,100 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useContext, useEffect, useRef} from 'react';
 import { Questions } from '../../helpers/Questions';
 import { GameStateContext } from "../../helpers/Contexts";
+import './Quiz.css';
 
 function QuizGame() {
-    console.log(Questions)
-    const { gameState, setGameState, score, setScore } = useContext(GameStateContext);
+    const { setGameState, score, setScore } = useContext(GameStateContext);
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [showScore, setShowScore] = useState(false);
+    const [minutes, setMinutes] = useState('00');
+    const [seconds, setSeconds] = useState('00');
+
+    let progress = useRef();
+
+
+    const setTimer = () => {
+        let startTime = 0;
+        
+       setInterval(() => {
+            if(Questions.length > currentQuestion) {
+                ++startTime;
+            } 
+     
+            let minutes2 = Math.floor(startTime / 60);
+            let seconds2 = startTime - minutes2 * 60;
+            let seconds = '';
+            let minutes = '';
+
+            if(minutes2 < 10) {
+                if(seconds2 < 10) {
+                    seconds = `0${seconds2}`;
+                    minutes = `0${minutes2}`
+
+                } else if (seconds2 < 60) {
+                    seconds = `${seconds2}`;
+                    minutes = `0${minutes2}`
+
+                }
+            } else {
+                if (seconds2 < 10) {
+                    seconds = `0${seconds2}`;
+                    minutes = `${minutes2}`
+                } else if (seconds2 < 60) {
+                    seconds = `${seconds2}`;
+                    minutes = `${minutes2}`
+                }
+            }
+            
+            setSeconds(seconds);
+            setMinutes(minutes);
+            
+        }, 1000)
+    }
+
+    
+
+    useEffect(() => {
+        setTimer();
+
+        return {}
+    },[])
+
 
     const handleAnswerOptionClick = (isCorrect) => {
         if (isCorrect) {
 			setScore(score + 1);
 		}
 
+        // Progress 
+        progress.current.style.width = `${((currentQuestion + 1) / Questions.length) * 100}%`;
+
+        console.log(currentQuestion / Questions.length)
 		const nextQuestion = currentQuestion + 1;
 
 		if (nextQuestion < Questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
-			setShowScore(true);
+            setGameState("finished");;
 		}
     }
 
-    // const finishQuiz = () => {
-    //     setGameState("finished");
-    // }
-
-
     return (
         <div>
-            {showScore ? (
-				<div className='score-section'>
-					You scored {score} out of {Questions.length}
-				</div>
-			) : (
-				<>
-					<div className='question-section'>
-						<div className='question-text'>{Questions[currentQuestion].questionText}</div>
-					</div>
-					<div className='answer-section'>
-						{Questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
-						))}
-					</div>
-
-				</>
-			)}
-
-            {/* {currentQuestion == Questions.length - 1  ? (
-                <button onClick={finishQuiz} id="nextQuestion">
-                Finish Quiz
-                </button>
-            ) : (
-                <button>Next Question</button>
-            )} */}
-
-            
-
+            <div className='question-section'>
+                <div className='question-text'>{Questions[currentQuestion].questionText}</div>
+            </div>
+                <div className='answer-section'>
+                    {Questions[currentQuestion].answerOptions.map((answerOption) => (
+                        <button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+                    ))}
+            </div>
+            <div className='time'>{minutes}:{seconds}</div>
+            <div className="progress">
+               <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" ref={progress}>
+                </div>
+            </div>
         </div>
     )
 }
@@ -249,35 +286,7 @@ export default QuizGame
 //     const [currentQuestion, setCurrentQuestion] = useState(0);
 //     const [optionChosen, setOptionChosen] = useState('');
 
-//     // const [minutes, setMinutes] = useState(0);
-//     // const [seconds, setSeconds] = useState(0);
-
-
-//     // let time = useRef()
-
-//     // const setTimer = () => {
-//     //     let startTime = 0;
-        
-//     //     time = setInterval(() => {
-//     //         if(Questions.length > currentQuestion) {
-//     //             ++startTime;
-//     //         } 
-     
-//     //         let minutes = Math.floor(startTime / 60);
-//     //         let seconds = startTime - minutes * 60;
-            
-//     //         setSeconds(seconds);
-//     //         setMinutes(minutes);
-            
-//     //     }, 1000)
-//     // }
-
-//     // setTimer();
-
-//     // useEffect(() => {
-//     //     return () => console.log('component remove')
-//     // },[score])
-
+    
 //     console.log(optionChosen, score)
 
 //     const chooseOption = (option) => {
@@ -338,7 +347,7 @@ export default QuizGame
 //                 <button className='btn-answ' onClick={() => chooseOption("optionC")}>{Questions[currentQuestion].optionC}</button>
 //             </div>
 
-//             {/* <div className='time'>{minutes}:{seconds}</div> */}
+            
 
 //             {currentQuestion == Questions.length - 1  ? (
 //                 <button onClick={finishQuiz} id="nextQuestion">

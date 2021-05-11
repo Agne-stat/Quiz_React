@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {useContext, useState, useRef, useEffect} from 'react';
 import { GameStateContext } from "../../helpers/Contexts";
 import { Questions } from '../../helpers/Questions';
