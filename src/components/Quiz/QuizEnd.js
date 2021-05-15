@@ -1,11 +1,11 @@
-/* eslint-disable no-unused-vars */
 import React, {useContext, useState, useRef, useEffect} from 'react';
 import { GameStateContext } from "../../helpers/Contexts";
-import { Questions } from '../../helpers/Questions';
+import { ThemeSelectContext } from "../../helpers/Contexts";
 
 
 function QuizEnd() {
-    const { gameState, setGameState, score, setScore, userName, setUserName } = useContext(GameStateContext);
+    const { score, userName, setUserName } = useContext(GameStateContext);
+    const { data, userTime, theme  } = useContext(ThemeSelectContext);
 
     const [submited, setSubmited] = useState(false);
 
@@ -17,7 +17,11 @@ function QuizEnd() {
         if(submited === true) {
             input.current.value = '';
         }
+
+        return {}
     }, [submited])
+
+    
 
 
     const saveUser = (e) => {
@@ -25,19 +29,24 @@ function QuizEnd() {
 
         let user = {
             name: userName,
-            score: score
+            score: score, 
+            time: userTime,
+            theme: theme
         }
     
         usersList.push(user);
         localStorage.setItem("quizScoresReact", JSON.stringify(usersList));
 
-        setSubmited(true);
+        if(input.current.value !== '') {
+            setSubmited(true);
+        }
+
     }
 
     return (
         <div className="container__text">
 
-            <p>Correct asnwers: {score} from {Questions.length} questions</p>
+            <p>Correct asnwers: {score} from {data.length} questions</p>
 
             <form onSubmit={saveUser}>
                 <label>Enter Your Name:</label>

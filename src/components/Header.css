@@ -13,19 +13,19 @@ header {
   list-style: none;
 }
 
-.navigation__item i {
-  margin: 0 5px;
-  color: #4ecdc4;
-  cursor: pointer;
-}
-
-.navigation__item:hover i {
-  color: #ffe66d;
-}
-
 .navigation__item a {
   text-decoration: none;
   color: var(--text-color);
   font-size: 1.2em;
   color: #f7fff7;
+  cursor: pointer;
+}
+
+.navigation__item a button {
+  text-decoration: none;
+  font-size: 1.1em;
+  color: #f7fff7;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
