@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 function Scores() {
-    let usersList = JSON.parse(localStorage.getItem("quizScoresReact")) || [];
+    let usersList = JSON.parse(localStorage.getItem("quizReact")) || [];
 
     const [sortedList, setSortedList] = useState([])
 

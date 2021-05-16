@@ -8,18 +8,39 @@ function QuizEnd() {
     const { data, userTime, theme  } = useContext(ThemeSelectContext);
 
     const [submited, setSubmited] = useState(false);
+    const [maxScore, setMaxScore] = useState(false);
+    const [lowScore, setLowScore] = useState(false);
 
     let input = useRef();
 
-    let usersList = JSON.parse(localStorage.getItem("quizScoresReact")) || [];
+    let usersList = JSON.parse(localStorage.getItem("quizReact")) || [];
+
 
     useEffect(() => {
         if(submited === true) {
             input.current.value = '';
+        } 
+
+        const scoresArr = usersList.map(item => { 
+            return item.score
+        })
+
+        let currentMaxScore = Math.max(...scoresArr)
+
+        if (score > currentMaxScore) {
+            setMaxScore(true)
         }
 
+        if (score < 3) {
+            setLowScore(true)
+        }
+
+        console.log(usersList);
+        console.log(scoresArr)
+        console.log(currentMaxScore)
+
         return {}
-    }, [submited])
+    }, [submited, score])
 
     
 
@@ -35,7 +56,7 @@ function QuizEnd() {
         }
     
         usersList.push(user);
-        localStorage.setItem("quizScoresReact", JSON.stringify(usersList));
+        localStorage.setItem("quizReact", JSON.stringify(usersList));
 
         if(input.current.value !== '') {
             setSubmited(true);
@@ -60,7 +81,9 @@ function QuizEnd() {
                 <button type='submit'>Save your score</button>
             </form>
 
-            {submited && <p>Your scores has been saved !</p>}
+            {maxScore && <p>It's a RECORD !</p>}
+            {lowScore && <p>Next time you'll do better !</p>}
+            {submited && <p>Your scores has been saved </p>}
             
         </div>
     )
