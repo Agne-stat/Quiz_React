@@ -40,6 +40,7 @@ function QuizEnd() {
         console.log(currentMaxScore)
 
         return {}
+    // eslint-disable-next-line
     }, [submited, score])
 
     

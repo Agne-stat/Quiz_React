@@ -10,9 +10,12 @@ function QuizGame() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [minutes, setMinutes] = useState('00');
     const [seconds, setSeconds] = useState('00');
+    // const [userAnswers, setUserAnswers] = useState('');
 
     let progress = useRef();
-    let fullTime = ''
+    let fullTime = '';
+    // let answersArr = [];
+    // let userAnswers= '';
 
     const setTimer = () => {
         let startTime = 0;
@@ -57,14 +60,20 @@ function QuizGame() {
 
     useEffect(() => {
         setTimer();
-            
+    
+        
+       // eslint-disable-next-line
     }, [])
 
 
-    const handleAnswerOptionClick = (correct) => {
+    // isidejau userAnswers kaip kintamaji, taip galiu patyti ka pasirenka useris.
+    const handleAnswerOptionClick = (correct, userAnswers) => {
         if (correct) {
 			setScore(score + 1);
 		}
+
+        console.log(userAnswers);
+
 
         // Progress 
         progress.current.style.width = `${((currentQuestion + 1) / data.length) * 100}%`;
@@ -83,6 +92,10 @@ function QuizGame() {
   
 		}
 
+        
+
+
+
     }
 
     return (
@@ -92,7 +105,7 @@ function QuizGame() {
             </div>
             <div className='answer-section'>
                     {data[currentQuestion].answers.map((answerOption) => (
-                        <button key={answerOption.index} onClick={() => handleAnswerOptionClick(answerOption.correct)}>{answerOption.text}</button>
+                        <button key={answerOption.index} onClick={() => handleAnswerOptionClick(answerOption.correct, answerOption)}>{answerOption.text}</button>
                     ))}
             </div>
             <div className='time'>{minutes}:{seconds}</div>
