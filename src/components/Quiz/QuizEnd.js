@@ -4,7 +4,7 @@ import { ThemeSelectContext } from "../../helpers/Contexts";
 
 
 function QuizEnd() {
-    const { score, userName, setUserName } = useContext(GameStateContext);
+    const { score, userName, setUserName, userAnswers, setGameState } = useContext(GameStateContext);
     const { data, userTime, theme  } = useContext(ThemeSelectContext);
 
     const [submited, setSubmited] = useState(false);
@@ -37,7 +37,8 @@ function QuizEnd() {
 
         console.log(usersList);
         console.log(scoresArr)
-        console.log(currentMaxScore)
+        console.log(currentMaxScore);
+        console.log(userAnswers)
 
         return {}
     // eslint-disable-next-line
@@ -81,6 +82,8 @@ function QuizEnd() {
                 />
                 <button type='submit'>Save your score</button>
             </form>
+
+            <button onClick={()=> setGameState("correctAnswers")}>Correct answers</button>
 
             {maxScore && <p>It's a RECORD !</p>}
             {lowScore && <p>Next time you'll do better !</p>}

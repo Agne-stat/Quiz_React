@@ -3,12 +3,15 @@ import { GameStateContext } from "../helpers/Contexts";
 import QuizMenu from '../components/Quiz/QuizMenu';
 import QuizGame from '../components/Quiz/QuizGame';
 import QuizEnd from '../components/Quiz/QuizEnd';
+import CorrectAnswers from '../components/Quiz/CorrectAnswers';
 
 function Quiz({themeName}) {
 
     const [gameState, setGameState] = useState("menu");
     const [score, setScore] = useState(0);
     const [userName, setUserName] = useState('');
+    const [userAnswers, setUserAnswers] = useState([]);
+
 
     return (
         <div>
@@ -19,12 +22,15 @@ function Quiz({themeName}) {
                 score,
                 setScore, 
                 userName, 
-                setUserName
+                setUserName,
+                userAnswers,
+                setUserAnswers
                 }}
             >
                 {gameState === "menu" && <QuizMenu themeName={themeName}/>}
                 {gameState === "playing" && <QuizGame />}
                 {gameState === "finished" && <QuizEnd />}
+                {gameState === "correctAnswers" && <CorrectAnswers />}
             </GameStateContext.Provider>
 
         </div>

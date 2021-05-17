@@ -4,18 +4,16 @@ import { ThemeSelectContext } from "../../helpers/Contexts";
 import './Quiz.css';
 
 function QuizGame() {
-    const { setGameState, score, setScore } = useContext(GameStateContext);
+    const { setGameState, score, setScore, userAnswers, setUserAnswers} = useContext(GameStateContext);
     const { data, userTime, setUserTime} = useContext(ThemeSelectContext);
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [minutes, setMinutes] = useState('00');
     const [seconds, setSeconds] = useState('00');
-    // const [userAnswers, setUserAnswers] = useState('');
 
     let progress = useRef();
     let fullTime = '';
-    // let answersArr = [];
-    // let userAnswers= '';
+
 
     const setTimer = () => {
         let startTime = 0;
@@ -60,21 +58,20 @@ function QuizGame() {
 
     useEffect(() => {
         setTimer();
-    
-        
        // eslint-disable-next-line
     }, [])
 
 
     // isidejau userAnswers kaip kintamaji, taip galiu patyti ka pasirenka useris.
-    const handleAnswerOptionClick = (correct, userAnswers) => {
+    const handleAnswerOptionClick = (correct, answ) => {
         if (correct) {
 			setScore(score + 1);
 		}
 
+        setUserAnswers( [...userAnswers, answ])
         console.log(userAnswers);
 
-
+        
         // Progress 
         progress.current.style.width = `${((currentQuestion + 1) / data.length) * 100}%`;
 
@@ -108,6 +105,7 @@ function QuizGame() {
                         <button key={answerOption.index} onClick={() => handleAnswerOptionClick(answerOption.correct, answerOption)}>{answerOption.text}</button>
                     ))}
             </div>
+            
             <div className='time'>{minutes}:{seconds}</div>
             <div className="progress">
                <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" ref={progress}>
