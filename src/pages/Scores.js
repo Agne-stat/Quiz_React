@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import './Scores.css'
 
 function Scores() {
     let usersList = JSON.parse(localStorage.getItem("quizReact")) || [];
@@ -29,28 +30,30 @@ function Scores() {
     console.log(sortedList)
 
     return (
-        <main>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Time</th>
-                        <th>Score</th>
-                        <th>Theme</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    {sortedList.map(item => (
+        <main className='scores'>
+            <div className='wrapper'>
+                <table>
+                    <thead>
                         <tr>
-                            <td>{item.name}</td>
-                            <td>{item.time}</td>
-                            <td>{item.score}</td>
-                            <td>{item.theme}</td>
+                            <th>Name</th>
+                            <th>Time</th>
+                            <th>Score</th>
+                            <th>Theme</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    
+                    <tbody>
+                        {sortedList.map(item => (
+                            <tr>
+                                <td>{item.name}</td>
+                                <td>{item.time}</td>
+                                <td>{item.score}</td>
+                                <td>{item.theme}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </main>
     )
 }

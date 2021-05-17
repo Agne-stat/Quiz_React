@@ -13,7 +13,7 @@ function Header() {
 
     return (
         <header>
-            <nav className="container">
+            <nav className="header_container">
                 <ul className="navigation">
                     <li className="navigation__item">
                         <Link to='/'>HOME</Link>

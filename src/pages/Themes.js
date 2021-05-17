@@ -5,6 +5,7 @@ import { Questions1 } from '../helpers/Questions1'
 import { Questions2 } from '../helpers/Questions2'
 import { Questions3 } from '../helpers/Questions3'
 import { Questions4 } from '../helpers/Questions4'
+import './Themes.css'
 
 
 
@@ -14,7 +15,7 @@ function Themes() {
 
 
     useEffect(() => {
-        btn.current.style.display = 'block';
+        btn.current.style.display = 'flex';
         if (theme === 'HTML') {
             let questions1 = Questions1
             setData(questions1)
@@ -40,9 +41,9 @@ function Themes() {
     }, [data, theme, setData, btn])
 
     return (
-        <main>
-            <div className="wrapper">
-                    <div className="container">
+        <main className='themes'>
+            <div className="wrapper_themes">
+                    <div className="container_themes">
                         
                             <div className="container__quiz">
                                     {theme === 'HTML' && <Quiz themeName={'HTML and CSS'}/>}
@@ -53,10 +54,13 @@ function Themes() {
                         
                         
                             <div ref={btn} className="container__btns">
-                                <button  onClick={() => setTheme('HTML')}>1</button>
-                                <button  onClick={() => setTheme('JavaScript')}>2</button>
-                                <button  onClick={() => setTheme('Node')}>3</button>
-                                <button  onClick={() => setTheme('React')}>4</button>
+                                <button className='theme__btn' id='theme1-btn' onClick={() => setTheme('HTML')}><span className='theme__info'>HTML and CSS</span><span class="theme1__info hide"></span><span class="theme1__info hide">10 Questions</span></button>
+
+                                <button className='theme__btn' id='theme2-btn' onClick={() => setTheme('JavaScript')}><span className='theme__info'>JavaScript</span><span class="theme2__info hide"></span><span class="theme2__info hide">15 Questions</span></button>
+
+                                <button className='theme__btn' id='theme3-btn' onClick={() => setTheme('Node')}><span className='theme03__info'>Node.js</span><span class="theme3__info hide"></span><span class="theme3__info hide">9 Questions</span></button>
+
+                                <button className='theme__btn' id='theme4-btn' onClick={() => setTheme('React')}><span className='theme__info'>React.js</span><span class="theme4__info hide"></span><span class="theme4__info hide">12 Questions</span></button>
                             </div>
             
                     </div>
