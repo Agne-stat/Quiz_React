@@ -1,70 +1,51 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { ThemeSelectContext } from "../helpers/Contexts";
 import { Link } from 'react-router-dom';
 import './Themes.css'
 
-
-
-
 function Themes() {
-    const { setTheme} = useContext(ThemeSelectContext);
+    const { setTheme, theme} = useContext(ThemeSelectContext);
 
+    // let usersList = JSON.parse(localStorage.getItem("quizReact")) || [];
+
+    // const [arr1, setArr1] = useState([])
+    // const [arr2, setArr2] = useState([])
+    // const [arr3, setArr3] = useState([])
+    // const [arr4, setArr4] = useState([])
+
+    // let newArr1 = []
 
     // useEffect(() => {
-    //     btn.current.style.display = 'flex';
-    //     if (theme === 'HTML') {
-    //         let questions1 = Questions1
-    //         setData(questions1)
-    //     } else if (theme === 'JavaScript') {
-    //         let questions2 = Questions2
-    //         setData(questions2)
-    //     } else if (theme === 'Node') {
-    //         let questions3 = Questions3
-    //         setData(questions3)
-    //     } else if (theme === 'React') {
-    //         let questions4 = Questions4
-    //         setData(questions4)
-    //     } else {
-    //         return
-    //     }
-        
-    //     console.log(data)
+    //     usersList.filter(user => user.theme === 'HTML and CSS');
 
-    //     return (
-    //         // btn.current.style.display = 'none'
-    //     )
+
+    //     setArr1(usersList)
+    //     console.log(arr1)
+
         
-    // }, [data, theme, setData, btn])
+    // },[])
 
     return (
         <main className='themes'>
             <div className="wrapper_themes">
                     <div className="container_themes">
-                        
-                            {/* <div className="container__quiz">
-                                    {theme === 'HTML' && <Quiz themename={'HTML and CSS'}/>}
-                                    {theme === 'JavaScript' && <Quiz themeName={'JavaScript'}/>}
-                                    {theme === 'Node' && <Quiz themeName={'Node.js'}/>}
-                                    {theme === 'React' && <Quiz themeName={'React.js'}/>}
-                            </div> */}
-                        
-                        
+                             
                             <div className="container__btns">
                                 
                                 <Link to='/quiz'>
-                                    <button className='theme__btn' id='theme1-btn' onClick={() => setTheme('HTML')}><span className='theme__info'>HTML and CSS</span><span className="theme1__info hide"></span><span className="theme1__info hide">10 Questions</span></button>
+                                    <button className='theme__btn' id='theme1-btn' onClick={() => setTheme('1')}><span className='theme__info'>HTML and CSS</span><span className="theme1__info hide"></span><span className="theme1__info hide">10 Questions</span></button>
                                 </Link>
 
                                 <Link to='/quiz'>
-                                    <button className='theme__btn' id='theme2-btn' onClick={() => setTheme('JavaScript')}><span className='theme__info'>JavaScript</span><span className="theme2__info hide"></span><span className="theme2__info hide">15 Questions</span></button>
+                                    <button className='theme__btn' id='theme2-btn' onClick={() => setTheme('2')}><span className='theme__info'>JavaScript</span><span className="theme2__info hide"></span><span className="theme2__info hide">15 Questions</span></button>
                                 </Link>
 
                                 <Link to='/quiz'>
-                                    <button className='theme__btn' id='theme3-btn' onClick={() => setTheme('Node')}><span className='theme03__info'>Node.js</span><span className="theme3__info hide"></span><span className="theme3__info hide">9 Questions</span></button>
+                                    <button className='theme__btn' id='theme3-btn' onClick={() => setTheme('3')}><span className='theme03__info'>Node.js</span><span className="theme3__info hide"></span><span className="theme3__info hide">9 Questions</span></button>
                                 </Link>
 
                                 <Link to='/quiz'>
-                                    <button className='theme__btn' id='theme4-btn' onClick={() => setTheme('React')}><span className='theme__info'>React.js</span><span className="theme4__info hide"></span><span className="theme4__info hide">12 Questions</span></button>
+                                    <button className='theme__btn' id='theme4-btn' onClick={() => setTheme('4')}><span className='theme__info'>React.js</span><span className="theme4__info hide"></span><span className="theme4__info hide">12 Questions</span></button>
                                 </Link>
                     
                             </div>

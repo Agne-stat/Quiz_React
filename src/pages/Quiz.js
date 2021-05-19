@@ -21,19 +21,19 @@ function Quiz() {
     const [themeName, setThemeName] = useState('')
 
     useEffect(() => {
-        if (theme === 'HTML') {
+        if (theme === '1') {
             let questions1 = Questions1
             setData(questions1)
             setThemeName('HTML and CSS')
-        } else if (theme === 'JavaScript') {
+        } else if (theme === '2') {
             let questions2 = Questions2
             setData(questions2)
             setThemeName('JavaScript')
-        } else if (theme === 'Node') {
+        } else if (theme === '3') {
             let questions3 = Questions3
             setData(questions3)
             setThemeName('Node.js')
-        } else if (theme === 'React') {
+        } else if (theme === '4') {
             let questions4 = Questions4
             setData(questions4)
             setThemeName('React.js')

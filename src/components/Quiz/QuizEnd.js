@@ -4,7 +4,7 @@ import { ThemeSelectContext } from "../../helpers/Contexts";
 
 
 function QuizEnd() {
-    const { score, userName, setUserName, userAnswers, setGameState } = useContext(GameStateContext);
+    const { score, userName, setUserName, userAnswers, setGameState, themeName } = useContext(GameStateContext);
     const { data, userTime, theme  } = useContext(ThemeSelectContext);
 
     const [submited, setSubmited] = useState(false);
@@ -54,7 +54,7 @@ function QuizEnd() {
             name: userName,
             score: score, 
             time: userTime,
-            theme: theme
+            theme: themeName
         }
     
         usersList.push(user);
@@ -69,7 +69,12 @@ function QuizEnd() {
     return (
         <main>
             <div className='results_container'>
-                <p>Correct asnwers: {score} from {data.length} questions</p>
+                <div className='info'>
+                    <p className='user_scores'>Correct asnwers: {score} from {data.length} questions</p>
+                    {maxScore && <p className='record'>It's a RECORD !</p>}
+                    {lowScore && <p className='low_score'>Next time you'll do better !</p>}
+                </div>
+
 
                 <form className='form' onSubmit={saveUser}>
                     <div className='form_container'>
@@ -85,20 +90,18 @@ function QuizEnd() {
 
                     <div className='submit-container'>
                         <button className="submit-btn" type='submit'>Save score</button>
+                        {submited && <p>Your scores has been saved </p>}
                     </div>
                     
                     
                 </form>
 
-                <div className='right-answ'>
+                {/* <div className='right-answ'>
                     <button className='right-answbtn' onClick={()=> setGameState("correctAnswers")}>Correct answers</button>
-                </div>
+                </div> */}
 
+            
                 
-
-                {maxScore && <p>It's a RECORD !</p>}
-                {lowScore && <p>Next time you'll do better !</p>}
-                {submited && <p>Your scores has been saved </p>}
             </div>
             
             

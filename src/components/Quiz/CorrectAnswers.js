@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import { GameStateContext } from "../../helpers/Contexts";
 import { ThemeSelectContext } from "../../helpers/Contexts";
 
@@ -6,12 +6,15 @@ function CorrectAnswers() {
     const {userAnswers, score} = useContext(GameStateContext);
     const { data } = useContext(ThemeSelectContext);
 
-    let newArr = [];
+    const [corectAnswer, setCorectAnswer] = useState(false)
+
+    let userA = useRef();
 
     useEffect(() => {
 
         console.log(document.querySelector('.user_answ'));
         console.log(userAnswers)
+
 
         // newArr = userAnswers.map((a) => {
         //     return a.text
@@ -47,19 +50,25 @@ function CorrectAnswers() {
 
                     {q.answers.map((a) => (
                         <>
-                        <li className='user_answ'>{a.text}</li>
+                        
+                        <li ref={userA} className='user_answ'>{a.text}</li>
 
-                        {userAnswers.forEach((answ) => {
-                            if(a.correct === answ.correct) { // cai turetu buti gerai, tik reikia dar pasigilinti, nes kartais uzsibugina react
-                                document.querySelector('.user_answ').classList.add('correct')
-                                // userA.current.style.color = 'green'
+                        {/* {userAnswers.forEach((answ) => {
+                            if(a.text === answ.text) { // cai turetu buti gerai, tik reikia dar pasigilinti, nes kartais uzsibugina react
+                                // document.querySelector('.user_answ').classList.add('correct')
+                                
+                                setCorectAnswer(true)
+                                
+                                
                             
                             } else if (a.correct === false && a.text === answ) {
-                                document.querySelector('.user_answ').classList.add('wrong')
+                                // document.querySelector('.user_answ').classList.add('wrong')
                                 // userA.current.style.color = 'red'
                                 
                             }
-                        })}
+                        })} */}
+
+                        
                         </>
                     ))}
                 </div>
