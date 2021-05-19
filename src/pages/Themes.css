@@ -35,9 +35,24 @@ body {
   align-content: center;
 }
 
-.theme__btn {
+.container__btns a {
   width: 50%;
   height: 50%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  transition: all 1s;
+  opacity: 1;
+}
+
+.container__btns a .theme__btn {
+  width: 100%;
+  height: 100%;
   border: none;
   display: flex;
   flex-direction: column;

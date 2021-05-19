@@ -67,29 +67,31 @@ function QuizEnd() {
     }
 
     return (
-        <div className="container__text">
+        <main>
+            <div className='results_container'>
+                <p>Correct asnwers: {score} from {data.length} questions</p>
 
-            <p>Correct asnwers: {score} from {data.length} questions</p>
+                <form onSubmit={saveUser}>
+                    <label>Enter Your Name:</label>
+                    <input
+                        ref={input}
+                        type="text"
+                        onChange={(e) => {
+                        setUserName(e.target.value);
+                        }}
+                    />
+                    <button type='submit'>Save your score</button>
+                </form>
 
-            <form onSubmit={saveUser}>
-                <label>Enter Your Name:</label>
-                <input
-                    ref={input}
-                    type="text"
-                    onChange={(e) => {
-                    setUserName(e.target.value);
-                    }}
-                />
-                <button type='submit'>Save your score</button>
-            </form>
+                <button onClick={()=> setGameState("correctAnswers")}>Correct answers</button>
 
-            <button onClick={()=> setGameState("correctAnswers")}>Correct answers</button>
-
-            {maxScore && <p>It's a RECORD !</p>}
-            {lowScore && <p>Next time you'll do better !</p>}
-            {submited && <p>Your scores has been saved </p>}
+                {maxScore && <p>It's a RECORD !</p>}
+                {lowScore && <p>Next time you'll do better !</p>}
+                {submited && <p>Your scores has been saved </p>}
+            </div>
             
-        </div>
+            
+        </main>
     )
 }
 

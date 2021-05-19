@@ -1,7 +1,6 @@
 import React, {useState, useContext, useEffect, useRef} from 'react';
 import { GameStateContext } from "../../helpers/Contexts";
 import { ThemeSelectContext } from "../../helpers/Contexts";
-import './Quiz.css';
 
 function QuizGame() {
     const { setGameState, score, setScore, userAnswers, setUserAnswers} = useContext(GameStateContext);
@@ -57,7 +56,11 @@ function QuizGame() {
     
 
     useEffect(() => {
+        console.log(data)
         setTimer();
+
+        return {
+        }
        // eslint-disable-next-line
     }, [])
 
@@ -96,22 +99,27 @@ function QuizGame() {
     }
 
     return (
-        <div>
-            <div className='question-section'>
-                <div className='question-text'>{data[currentQuestion].question}</div>
-            </div>
-            <div className='answer-section'>
-                    {data[currentQuestion].answers.map((answerOption) => (
-                        <button key={answerOption.index} onClick={() => handleAnswerOptionClick(answerOption.correct, answerOption)}>{answerOption.text}</button>
-                    ))}
-            </div>
-            
-            <div className='time'>{minutes}:{seconds}</div>
-            <div className="progress">
-               <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" ref={progress}>
+        <main>
+            <div className='quiz__question'>
+                <div className='question'>
+                    <div>{data[currentQuestion].question}</div>
+                </div>
+                <div className='answers-btns'>
+                        {data[currentQuestion].answers.map((answerOption) => (
+                            <button className='btn-answ' key={answerOption.index} onClick={() => handleAnswerOptionClick(answerOption.correct, answerOption)}>{answerOption.text}</button>
+                        ))}
                 </div>
             </div>
-        </div>
+            
+            <div className='quiz__controls'>
+                <div className='time'>{minutes}:{seconds}</div>
+                <div className="progress">
+                <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" ref={progress}>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
     )
 }
 
