@@ -4,7 +4,7 @@ import { ThemeSelectContext } from "../../helpers/Contexts";
 
 function QuizGame() {
     const { setGameState, score, setScore, userAnswers, setUserAnswers} = useContext(GameStateContext);
-    const { data, userTime, setUserTime} = useContext(ThemeSelectContext);
+    const { data, setUserTime} = useContext(ThemeSelectContext);
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [minutes, setMinutes] = useState('00');
