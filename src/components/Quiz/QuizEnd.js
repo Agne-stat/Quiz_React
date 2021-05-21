@@ -4,8 +4,8 @@ import { ThemeSelectContext } from "../../helpers/Contexts";
 
 
 function QuizEnd() {
-    const { score, userName, setUserName, userAnswers, setGameState, themeName } = useContext(GameStateContext);
-    const { data, userTime, theme  } = useContext(ThemeSelectContext);
+    const { score, userName, setUserName, userAnswers, themeName } = useContext(GameStateContext);
+    const { data, userTime} = useContext(ThemeSelectContext);
 
     const [submited, setSubmited] = useState(false);
     const [maxScore, setMaxScore] = useState(false);

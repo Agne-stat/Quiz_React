@@ -1,10 +1,6 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeSelectContext } from "../helpers/Contexts";
-// import { Questions1 } from '../helpers/Questions1'
-// import { Questions2 } from '../helpers/Questions2'
-// import { Questions3 } from '../helpers/Questions3'
-// import { Questions4 } from '../helpers/Questions4'
 import './Home.css'
 
 function Home() {

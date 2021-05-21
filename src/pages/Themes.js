@@ -1,10 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext} from 'react'
 import { ThemeSelectContext } from "../helpers/Contexts";
 import { Link } from 'react-router-dom';
 import './Themes.css'
 
 function Themes() {
-    const { setTheme, theme} = useContext(ThemeSelectContext);
+    const { setTheme} = useContext(ThemeSelectContext);
 
     // let usersList = JSON.parse(localStorage.getItem("quizReact")) || [];
 

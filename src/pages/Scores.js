@@ -24,7 +24,7 @@ function Scores() {
         
         setSortedList(usersList)
         
-        
+     // eslint-disable-next-line
     }, [])
 
     console.log(sortedList)

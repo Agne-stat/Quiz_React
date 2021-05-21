@@ -45,6 +45,7 @@ function Quiz() {
         return {
             
         }
+     // eslint-disable-next-line
     }, [])
 
 
@@ -69,9 +70,6 @@ function Quiz() {
                 {gameState === "correctAnswers" && <CorrectAnswers />}
 
             </GameStateContext.Provider>
-
-            
-
         </>
     )
 }
