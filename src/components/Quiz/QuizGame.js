@@ -69,30 +69,21 @@ function QuizGame() {
 
         // users answers array for correct answers 
         setUserAnswers( [...userAnswers, answ])
-        console.log(userAnswers);
 
         
         // Progress 
         progress.current.style.width = `${((currentQuestion + 1) / data.length) * 100}%`;
 
-        console.log(currentQuestion / data.length)
 		const nextQuestion = currentQuestion + 1;
 
 		if (nextQuestion < data.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
             fullTime = document.querySelector('.time').innerHTML;
-            console.log(fullTime)
             setUserTime(fullTime)
-            console.log(userTime)
             setGameState("finished");
   
 		}
-
-        
-
-
-
     }
 
     return (

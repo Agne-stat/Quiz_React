@@ -7,7 +7,6 @@ function Home() {
     const { setTheme} = useContext(ThemeSelectContext);
 
     let random = (Math.floor(Math.random()*4) + 1).toString();
-    console.log(random)
 
     return (
         <main className='home'>
