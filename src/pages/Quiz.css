@@ -61,7 +61,7 @@ h1 {
 /* quiz questions and answers */
 
 .quiz__question {
-  height: calc(50%-30px);
+  height: calc(70%-30px);
 }
 
 .question {
@@ -95,7 +95,7 @@ h1 {
 /* quiz controls */
 .quiz__controls {
   width: 100%;
-  height: calc(50%-30px);
+  height: calc(30%-30px);
   display: flex;
   flex-direction: column;
   justify-content: center;
