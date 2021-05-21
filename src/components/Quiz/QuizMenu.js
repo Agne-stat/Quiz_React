@@ -7,7 +7,7 @@ function QuizMenu() {
 
 
     return (
-        <main>
+        <main className='quiz_menu'>
             <div className='container__text'>
                 <h1>Are you ready?</h1>
                 <p className="info">Find out how well you know <span>{themeName}</span></p>

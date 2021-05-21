@@ -99,7 +99,7 @@ function QuizGame() {
     }
 
     return (
-        <main>
+        <main className='quiz_menu'>
             <div className='quiz__question'>
                 <div className='question'>
                     <div>{data[currentQuestion].question}</div>

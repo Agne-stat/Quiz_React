@@ -67,7 +67,7 @@ function QuizEnd() {
     }
 
     return (
-        <main>
+        <main className='quiz_menu'>
             <div className='results_container'>
                 <div className='info'>
                     <p className='user_scores'>Correct asnwers: {score} from {data.length} questions</p>

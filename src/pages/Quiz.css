@@ -1,3 +1,9 @@
+.quiz_menu {
+  padding: 30px;
+  width: calc(100vw - (100vw - 100%));
+  min-height: 82vh;
+  background-color: #f7fff7;
+}
 .container__text {
   height: 100%;
   display: flex;
@@ -253,4 +259,61 @@ input {
 .right-answbtn:hover {
   background-color: #ffe66d;
   opacity: 1;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .question div {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .start-btn {
+    width: 30%;
+  }
+
+  .quiz__question {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .answers-btns {
+    margin: 20px auto;
+    width: 100%;
+  }
+
+  .quiz__controls {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .time {
+    margin: 10px 0;
+    align-self: center;
+  }
+
+  .results_container {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .quiz {
+    margin: 0 200px;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .quiz__question {
+    max-width: 800px;
+  }
+
+  .quiz__controls {
+    max-width: 800px;
+  }
+
+  .results_container {
+    max-width: 800px;
+  }
 }
