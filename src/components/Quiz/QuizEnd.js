@@ -34,10 +34,7 @@ function QuizEnd() {
         if (score < 3) {
             setLowScore(true)
         }
-
-        console.log(usersList);
-        console.log(scoresArr)
-        console.log(currentMaxScore);
+        
         console.log(userAnswers)
 
         return {}

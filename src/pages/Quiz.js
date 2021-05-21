@@ -12,7 +12,7 @@ import { Questions4 } from '../helpers/Questions4'
 import './Quiz.css'
 
 function Quiz() {
-    const { data, theme, setData } = useContext(ThemeSelectContext);
+    const { theme, setData } = useContext(ThemeSelectContext);
 
     const [gameState, setGameState] = useState("menu");
     const [score, setScore] = useState(0);
@@ -40,7 +40,6 @@ function Quiz() {
         } else {
             return
         }
-        console.log(data)
 
         return {
             

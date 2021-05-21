@@ -7,7 +7,6 @@ function Scores() {
     const [sortedList, setSortedList] = useState([])
 
     useEffect(() => {
-        console.log(usersList)
         usersList.sort((a,b) => {
             if(a.score === b.score) {
                 var x = a.time,
@@ -27,7 +26,6 @@ function Scores() {
      // eslint-disable-next-line
     }, [])
 
-    console.log(sortedList)
 
     return (
         <main className='scores'>

@@ -13,7 +13,7 @@ function QuizGame() {
     let progress = useRef();
     let fullTime = '';
 
-
+    // timer
     const setTimer = () => {
         let startTime = 0;
         
@@ -53,10 +53,7 @@ function QuizGame() {
         }, 1000)
     }
 
-    
-
     useEffect(() => {
-        console.log(data)
         setTimer();
 
         return {
@@ -65,12 +62,12 @@ function QuizGame() {
     }, [])
 
 
-    // isidejau userAnswers kaip kintamaji, taip galiu patyti ka pasirenka useris.
     const handleAnswerOptionClick = (correct, answ) => {
         if (correct) {
 			setScore(score + 1);
 		}
 
+        // users answers array for correct answers 
         setUserAnswers( [...userAnswers, answ])
         console.log(userAnswers);
 
